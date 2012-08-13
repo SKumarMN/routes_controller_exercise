@@ -1,4 +1,14 @@
-<h2> I AMA View </h2>
-<p>
-  Find me in <%= Rails.root.join("app", "views", "products", __FILE__ ) %>
-</p>
+<h1> All Products</h1>
+
+<% all_products = Product.includes(:user).all %>
+
+<ul>
+  <% all_products.each do |product| %>
+  
+  <li>
+    Product Name: "<%= product.name %>"" costs $<%= product.price %>
+    Sold by <%= product.user.name %>
+  </li>
+  
+<%end%>
+</ul>
